@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+:root{--cream:#f3eee6;--paper:#faf7f1;--brown:#6b503c;--dark:#49372a;--gold:#9b8469;--line:rgba(107,80,60,.22);--shadow:0 18px 50px rgba(73,55,42,.12)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--cream);color:var(--dark)}body{font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;overflow-x:hidden}.texture{position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(rgba(107,80,60,.13) .6px,transparent .6px);background-size:7px 7px}.app{position:relative;min-height:100vh;z-index:1}.screen{min-height:100vh;padding:clamp(24px,5vw,64px)}.hidden{display:none!important}
+.home-screen{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;max-width:900px;margin:auto}.logo{width:min(330px,55vw);height:auto;object-fit:contain;margin-bottom:22px}.home-kicker,.label{letter-spacing:.24em;font-size:12px;font-weight:600;color:var(--gold);margin:0 0 18px}.home-screen h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,7vw,78px);line-height:1.02;font-weight:500;margin:0 0 24px;color:var(--brown)}.home-copy{max-width:520px;font-size:clamp(17px,2vw,21px);line-height:1.55;color:rgba(73,55,42,.72);margin:0 0 34px}.primary{width:auto;min-width:270px;border:1px solid var(--brown);border-radius:999px;padding:17px 30px;background:var(--brown);color:#fffaf4;font:600 16px "DM Sans",sans-serif;letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px rgba(107,80,60,.18);transition:transform .2s,box-shadow .2s}.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(107,80,60,.22)}.primary:active{transform:scale(.98)}.primary:disabled{opacity:.55;cursor:default;transform:none}
+.game-screen{max-width:1400px;margin:auto}.game-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:clamp(18px,3vw,34px)}.home-button{border:0;background:transparent;color:var(--brown);font:500 14px "DM Sans",sans-serif;cursor:pointer;padding:10px}.game-content{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(20px,4vw,60px);align-items:stretch;min-height:calc(100vh - 150px)}.moment-info{display:flex;flex-direction:column;padding:clamp(10px,2vw,35px)}.number{font-family:"Playfair Display",Georgia,serif;font-size:clamp(76px,10vw,130px);line-height:.85;color:var(--brown);margin-bottom:18px}.moment-info h1{font-family:"Playfair Display",Georgia,serif;font-weight:500;font-size:clamp(30px,4vw,58px);line-height:1.06;color:var(--dark);margin:0 0 20px;max-width:600px}.remaining{color:rgba(73,55,42,.58);font-size:14px;margin:0 0 30px}.moment-info .primary{align-self:flex-start}.text-button{border:0;background:transparent;color:var(--gold);font:500 13px "DM Sans",sans-serif;cursor:pointer;margin-top:12px;padding:8px 0}.art-card{min-height:500px;background:rgba(250,247,241,.72);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);padding:clamp(18px,3vw,34px);display:flex;align-items:center;justify-content:center}.art-frame{width:100%;height:min(70vh,680px);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:20px}.art-img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}.art-placeholder{font-family:"Playfair Display",Georgia,serif;font-size:clamp(60px,9vw,120px);color:rgba(155,132,105,.35);letter-spacing:.08em}
+@media(max-width:850px){.game-content{grid-template-columns:1fr}.art-card{min-height:360px;order:-1}.art-frame{height:min(58vh,520px)}.moment-info{padding:0 4px 20px}.moment-info .primary{align-self:stretch}}@media(orientation:landscape) and (max-height:650px){.screen{padding:18px 28px}.game-header{margin-bottom:8px}.game-content{min-height:calc(100vh - 85px)}.art-card{min-height:0;padding:14px}.art-frame{height:calc(100vh - 120px)}.moment-info h1{font-size:clamp(26px,4vw,46px)}.number{font-size:clamp(58px,8vw,100px)}}
+
+/* =========================
+   BOTONES SECUNDARIOS
+   ========================= */
+
+.secondary-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: rgba(250, 247, 241, .7);
+  color: var(--brown);
+
+  border-radius: 999px;
+
+  padding: 10px 16px;
+
+  font: 500 13px "DM Sans", sans-serif;
+
+  cursor: pointer;
+
+  transition: background .2s ease,
+              transform .2s ease;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, .9);
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   HISTORIAL
+   ========================= */
+
+.history-panel {
+  position: fixed;
+  inset: 0;
+
+  z-index: 20;
+}
+
+
+.history-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(73, 55, 42, .28);
+
+  backdrop-filter: blur(5px);
+}
+
+
+.history-card {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: min(520px, 92vw);
+
+  background: var(--paper);
+
+  box-shadow:
+    -18px 0 50px rgba(73, 55, 42, .18);
+
+  padding: clamp(24px, 4vw, 42px);
+
+  overflow-y: auto;
+}
+
+
+/* CABECERA */
+
+.history-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+
+.history-header h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(38px, 5vw, 52px);
+
+  font-weight: 500;
+
+  color: var(--brown);
+
+  margin: 0;
+}
+
+
+.close-button {
+  border: 0;
+
+  background: transparent;
+
+  color: var(--brown);
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  padding: 0 4px;
+}
+
+
+/* LISTA */
+
+.history-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.history-item {
+  display: grid;
+
+  grid-template-columns: 48px 1fr 28px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+.history-text {
+  font-size: 15px;
+
+  line-height: 1.3;
+
+  color: var(--brown-dark);
+
+  white-space: nowrap;
+}
+
+
+.history-position {
+  text-align: right;
+
+  font-size: 11px;
+
+  color: rgba(73, 55, 42, .4);
+}
+
+
+.empty-history {
+  color: rgba(73, 55, 42, .55);
+
+  line-height: 1.5;
+}
+
+
+/* IPAD / PANTALLAS PEQUEÑAS */
+
+@media (max-width: 850px) {
+
+  .secondary-actions {
+    width: 100%;
+  }
+
+  .secondary-button {
+    flex: 1;
+  }
+
+}
+
+.game-logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
